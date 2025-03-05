@@ -33,11 +33,15 @@ jobs:
 
     - name: Find Docker projects and build
       run: |
-        find . -maxdepth 1 -type d ! -path . ! -path ./.git | while read dir; do
-          project_name=$(basename "$dir")
-          docker buildx build \
+        find . -maxdepth 1 -type d \
+          ! -path . \
+          ! -name '.*' \
+          -exec test -f "{}/Dockerfile" \; \
+          -print0 | while IFS= read -r -d '' dir; do
+            project_name=$(basename "$dir")
+            docker buildx build \
             --platform linux/loong64 \
             --tag ghcr.io/fzdslr/$project_name:latest \
             --push \
             ./$project_name
-        done
+          done
