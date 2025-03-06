@@ -23,7 +23,7 @@ RUN \
 # image for building
 FROM base AS builder
 
-ARG QBT_VERSION="5.0.4" \
+ARG QBT_VERSION="4.6.7" \
     BOOST_VERSION_MAJOR="1" \
     BOOST_VERSION_MINOR="86" \
     BOOST_VERSION_PATCH="0" \
@@ -154,6 +154,6 @@ COPY --from=builder /sbom.txt /sbom.txt
 
 COPY entrypoint.sh /entrypoint.sh
 
-LABEL org.opencontainers.image.source = "https://github.com/FZDSLR/loong64-docker-builder"
+LABEL org.opencontainers.image.source=https://github.com/FZDSLR/loong64-docker-builder
 
 ENTRYPOINT ["/sbin/tini", "-g", "--", "/entrypoint.sh"]
