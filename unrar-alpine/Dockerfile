@@ -23,7 +23,7 @@ RUN \
   cd /tmp/unrar && \
   sed -i 's|LDFLAGS=-pthread|LDFLAGS=-pthread -static|' makefile && \
   sed -i 's|CXXFLAGS=-march=native|CXXFLAGS=-march=loongarch64 -msimd=none|' makefile && \
-  make && \
+  make -j $(nproc) && \
   install -v -m755 unrar /usr/bin && \
   echo "**** test binary ****" && \
   /usr/bin/unrar v /data.rar && \
