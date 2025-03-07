@@ -11,6 +11,7 @@ RUN \
   echo "**** install build dependencies ****" && \
   apk add --no-cache --virtual=build-dependencies \
     build-base \
+    curl \
     linux-headers && \
   echo "**** install unrar from source ****" && \
   mkdir /tmp/unrar && \
