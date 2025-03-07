@@ -133,6 +133,8 @@ COPY --from=builder /usr/bin/qbittorrent-nox /usr/bin/qbittorrent-nox
 
 COPY --from=builder /sbom.txt /sbom.txt
 
+COPY entrypoint.sh /entrypoint.sh
+
 LABEL org.opencontainers.image.source=https://github.com/FZDSLR/loong64-docker-builder
 
 ENTRYPOINT ["/sbin/tini", "-g", "--", "/entrypoint.sh"]
