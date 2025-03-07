@@ -17,6 +17,7 @@ RUN \
   apk add --no-cache \
     findutils \
     p7zip \
+    curl \
     python3 && \
   echo "**** install transmission ****" && \
   if [ -z ${TRANSMISSION_VERSION+x} ]; then \
