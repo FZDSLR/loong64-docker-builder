@@ -1,5 +1,5 @@
 # create an up-to-date base image for everything
-FROM alpine:latest AS base
+FROM ghcr.io/fzdslr/alpine:3.21 AS base
 
 RUN \
   apk --no-cache --update-cache upgrade
